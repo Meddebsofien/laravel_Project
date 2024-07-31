@@ -1,0 +1,93 @@
+## DEPOT MASTER DU PROJET INNOVGUIDE
+
+Ce depot regroupe l'ensemble des travaux effectués sur les differentes branches. Le regroupement ce fait par fusion d'une branche vers la branche "MASTER".
+
+## TECHNOLOGIES
+
+Ce depot est élaborer par des technologies compatibles avec Laravel, framework s'appuyant sur PHP. Ainsi, nous avons :
+
+-   FILAMENT
+-   FLOWBITE (TAILWIND CSS)
+-   VUEJS
+-   LIVEWIRE
+-   JAVASCRIPT
+
+## INSTALLATION
+
+### CLÔNE
+Dans votre terminal, inserer la ligne : `git clone URL_du_projet_GitLab`
+remplacer URL_du_projet_GitLab par URL de la branche 'master'.
+
+### COMPOSER 
+Après le clône du projet, déplacez-vous dans le dossier grâce à la commande `cd nom_du_dossier`
+Toujours dans le terminal, faire la commande `composer install` pour installer les dépendances.
+
+
+# ---------------INDICATIONS LARAVEL----------------- 
+
+## Introduction laravel
+
+This is a simple pipeline example for a [Laravel]((https://laravel.com/docs)) application, showing just
+how easy it is to get up and running with Laravel development using GitLab.
+
+## What's contained in this project
+
+This repository contains the basic folder structure of a Laravel application. 
+
+The `.gitlab-ci.yml` contains the configuration needed for GitLab to build your code. Let's take a look, section by section.
+
+Firstly, a docker image to test PHP applications with Gitlab CI (or any other CI platform!) was used to build our project. For more info on the docker image: [https://github.com/edbizarro/gitlab-ci-pipeline-php](https://github.com/edbizarro/gitlab-ci-pipeline-php)
+
+```
+image: edbizarro/gitlab-ci-pipeline-php:latest
+```
+
+We're defining two stages here: `test`, and `deploy`. As your project grows
+in complexity you can add more of these. 
+
+```
+stages:
+    - test
+    - deploy
+```
+
+Also a `before_script` job is implemented to install the neccessary npm (for frontend assets) and php dependencies.
+
+```
+before_script:
+    # Install Node dependencies.
+    - npm install
+    # install composer dependencies
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress
+    # Copy over example configuration.
+    # Don't forget to set the database config in .env.example correctly
+    - cp .env.example .env
+    # Generate an application key. Re-cache.
+    - php artisan key:generate
+    - php artisan config:cache
+    # Run database migrations.
+    - php artisan migrate:refresh --seed
+    # Run database seed
+    - php artisan db:seed
+```
+
+Next, we test our application if there's any available tests in the `tests` directory.
+
+```
+test:
+  script:
+    # run laravel tests
+    - php vendor/bin/phpunit --coverage-text --colors=never
+```
+
+Finally, we deploy our application. This section is not limited to the below code but can be configured based on your project requirements.  You can also deploy to cloud services like Amazon, Google Cloud, Heroku, etc.
+
+```
+deploy:
+  stage: deploy
+  script: echo "Define your deployment script!"
+  environment: production
+```
+
+Your `.gitlab-ci.yml` configuration can be customized based on your preferences. To learn more, read the documentation [here](https://docs.gitlab.com/ee/ci/yaml/).
+

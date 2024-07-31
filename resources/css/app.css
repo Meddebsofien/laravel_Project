@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modifier le style du label */
+.fi-fo-field-wrp-label {
+    /* Exemple de styles pour le label */
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem; /* Remplacez gap-x-3 par gap en CSS */
+    /* Ajoutez d'autres styles ici */
+    color: rgb(238, 15, 38); /* Exemple: changer la couleur du texte */
+}
+
+/* Modifier la taille du texte du span */
+.fi-fo-field-wrp-label span {
+    font-size: 1.2rem; /* Change la taille du texte */
+    font-weight: 600; /* Exemple: changer le poids de la police */
+    color: #ce4125; /* Exemple: changer la couleur du texte */
+    font-family:fantasy
+} 
+
+.fi-input-wrp{
+    background: #e5ae0b;
+}
