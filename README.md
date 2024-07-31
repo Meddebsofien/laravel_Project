@@ -1,7 +1,3 @@
-## DEPOT MASTER DU PROJET INNOVGUIDE
-
-Ce depot regroupe l'ensemble des travaux effectués sur les differentes branches. Le regroupement ce fait par fusion d'une branche vers la branche "MASTER".
-
 ## TECHNOLOGIES
 
 Ce depot est élaborer par des technologies compatibles avec Laravel, framework s'appuyant sur PHP. Ainsi, nous avons :
@@ -15,24 +11,25 @@ Ce depot est élaborer par des technologies compatibles avec Laravel, framework 
 ## INSTALLATION
 
 ### CLÔNE
+
 Dans votre terminal, inserer la ligne : `git clone URL_du_projet_GitLab`
 remplacer URL_du_projet_GitLab par URL de la branche 'master'.
 
-### COMPOSER 
+### COMPOSER
+
 Après le clône du projet, déplacez-vous dans le dossier grâce à la commande `cd nom_du_dossier`
 Toujours dans le terminal, faire la commande `composer install` pour installer les dépendances.
 
-
-# ---------------INDICATIONS LARAVEL----------------- 
+# ---------------INDICATIONS LARAVEL-----------------
 
 ## Introduction laravel
 
-This is a simple pipeline example for a [Laravel]((https://laravel.com/docs)) application, showing just
+This is a simple pipeline example for a [Laravel](<(https://laravel.com/docs)>) application, showing just
 how easy it is to get up and running with Laravel development using GitLab.
 
 ## What's contained in this project
 
-This repository contains the basic folder structure of a Laravel application. 
+This repository contains the basic folder structure of a Laravel application.
 
 The `.gitlab-ci.yml` contains the configuration needed for GitLab to build your code. Let's take a look, section by section.
 
@@ -43,7 +40,7 @@ image: edbizarro/gitlab-ci-pipeline-php:latest
 ```
 
 We're defining two stages here: `test`, and `deploy`. As your project grows
-in complexity you can add more of these. 
+in complexity you can add more of these.
 
 ```
 stages:
@@ -80,7 +77,7 @@ test:
     - php vendor/bin/phpunit --coverage-text --colors=never
 ```
 
-Finally, we deploy our application. This section is not limited to the below code but can be configured based on your project requirements.  You can also deploy to cloud services like Amazon, Google Cloud, Heroku, etc.
+Finally, we deploy our application. This section is not limited to the below code but can be configured based on your project requirements. You can also deploy to cloud services like Amazon, Google Cloud, Heroku, etc.
 
 ```
 deploy:
@@ -90,4 +87,3 @@ deploy:
 ```
 
 Your `.gitlab-ci.yml` configuration can be customized based on your preferences. To learn more, read the documentation [here](https://docs.gitlab.com/ee/ci/yaml/).
-
